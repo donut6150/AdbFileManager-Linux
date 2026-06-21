@@ -29,11 +29,15 @@ void AdbHandler::exec(const QStringList &args, ProcType type) {
   QProcess *worker = new QProcess(this);
   connect(worker, &QProcess::finished, this, [this, worker, type]() {
     QString outText = worker->readAllStandardOutput();
+    QString errText = worker->readAllStandardError();
     if (!outText.isEmpty())
       emit output(outText, type);
+    if (!errText.isEmpty())
+      emit err(errText);
     worker->deleteLater();
   });
   worker->start(adbBin, args);
+  emit procStarted({args.join(" ")});
 }
 
 void AdbHandler::readStdOut() {
