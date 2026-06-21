@@ -1,0 +1,55 @@
+name: Build AppImage
+
+on:
+  push:
+    branches:
+      master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Install packages
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential cmake qt6-base-dev qt6-tools-dev qt6-tools-dev-tools
+    
+    - name: Download linuxdeployqt
+      run: |
+        wget -O linuxdeployqt.AppImage -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+        chmod a+x linuxdeployqt.AppImage
+    
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    
+    - name: Prepare AppDir
+      run: |
+        mkdir -p AppDir/usr/bin
+        mkdir -p AppDir/usr/share/applications
+        mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+    
+    - name: Compile
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build
+    
+    - name: Copy to AppDir
+      run: |
+        cp build/AdbFileManager AppDir/usr/bin/
+        cp AdbFileManager.desktop AppDir/usr/share/applications
+        cp adbfilemanager.png AppDir/usr/share/icons/hicolor/256x256/apps/
+
+    - name: Package AppImage
+      run: 
+        ./linuxdeployqt.AppImage AppDir/usr/share/applications/AdbFileManager.desktop -appimage
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: AdbFileManager-AppImage
+        path: "*.AppImage"

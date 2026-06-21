@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=ADB File Manager
+Exec=AdbFileManager
+Icon=adbfilemanager
+Categories=Utility;System;
