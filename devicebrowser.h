@@ -9,13 +9,24 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+enum class DeviceStatus { DISCONNECTED, CONNECTED };
+
 class DeviceBrowser : public QWidget {
   Q_OBJECT
+
 public:
   explicit DeviceBrowser(QWidget *parent = nullptr);
+
   QLabel *deviceIcon, *deviceSerial, *deviceState, *devicePath;
-  void parseList(const QString &output);
-  QString currPath();
+  void parseAdbOutput(const QString &output);
+  
+  QStringList pullPaths() const;
+  QString currentPath = "/sdcard";
+
+  DeviceStatus deviceStatus;
+
+signals:
+  void pathChanged(const QString &newPath);
 
 private:
   QFrame *statusFrame, *pathFrame;
@@ -23,4 +34,5 @@ private:
   QVBoxLayout *mainLayout;
   QPushButton *pushBtn, *pullBtn, *refreshBtn, *consoleBtn, *settingBtn;
   QTableWidget *androidFileView;
+  bool isDir(const QString &type);
 };
