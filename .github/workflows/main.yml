@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+      
     - name: Install packages
       run: |
         sudo apt update
@@ -23,9 +26,6 @@ jobs:
       run: |
         wget -O linuxdeployqt.AppImage -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
         chmod a+x linuxdeployqt.AppImage
-    
-    - name: Checkout repo
-      uses: actions/checkout@v4
     
     - name: Prepare AppDir
       run: |
