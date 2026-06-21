@@ -3,7 +3,7 @@
 #include <QProcess>
 #include <QString>
 
-enum class ProcType { None, DeviceCheck, LoadFiles, Navigate };
+enum class ProcType { NONE, DEVICE_CHECK, LOAD_FILES };
 
 class AdbHandler : public QObject {
   Q_OBJECT
@@ -11,7 +11,7 @@ public:
   explicit AdbHandler(QObject *parent = nullptr);
 
   void startServer();
-  void exec(const QStringList &args, ProcType type = ProcType::None);
+  void exec(const QStringList &args, ProcType type = ProcType::NONE);
 
 signals:
   void output(const QString &outStr, ProcType type);
