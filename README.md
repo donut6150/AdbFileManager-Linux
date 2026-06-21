@@ -25,13 +25,13 @@ The app is written in C++/Qt so as to make it as fast as possible without compro
 - [x] Console log
 - [x] Settings window (only persists `-a` flag during `adb pull`)
 - [x] Download ADB if not already installed
+- [x] Navigation
+- [x] `adb push <source> <destination>` / `adb pull [-a] <source> <destination>`
 
 ### To be implemented (highest to lowest priority)
 
-- [ ] Navigation
-- [ ] `adb push <source> <destination>` / `adb pull [-a] <source> <destination>`
 - [ ] Multi-device support (ability to use one device at a time)
-- [ ] Skip downloading ADB if already present
+- [ ] Skip downloading ADB if already present in system
 
 ## How to build
 
