@@ -17,7 +17,7 @@ jobs:
     - name: Install packages
       run: |
         sudo apt update
-        sudo apt install -y build-essential cmake qt6-base-dev qt6-tools-dev qt6-tools-dev-tools
+        sudo apt install -y build-essential cmake qt6-base-dev qt6-tools-dev qt6-tools-dev-tools libgl1-mesa-dev libglu1-mesa-dev
     
     - name: Download linuxdeployqt
       run: |
