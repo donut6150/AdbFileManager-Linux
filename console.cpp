@@ -5,7 +5,7 @@ ConsoleLog::ConsoleLog(QWidget *parent) : QWidget(parent) {
 
   this->setWindowFlags(Qt::Window);
   this->setWindowTitle("Console output");
-  this->resize(800, 600);
+  this->resize(1000, 600);
 
   QVBoxLayout *mainLayout = new QVBoxLayout(this);
   QHBoxLayout *mainHLayout = new QHBoxLayout();
@@ -45,7 +45,7 @@ void ConsoleLog::appendStdOut(const QString &text) {
 
 void ConsoleLog::appendStdErr(const QString &text) {
   QString err = QString("<span style=\"color: #dddd00;\">%1</span>")
-                    .arg(text.toHtmlEscaped());
+                    .arg(text.toHtmlEscaped().replace('\n', "<br>"));
   conOut->appendHtml(err);
 }
 
