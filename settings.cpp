@@ -20,7 +20,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent) {
   preserveAttr =
       new QCheckBox("Preserve file attributes on pull? (Adds -a flag)", this);
   preserveAttr->setChecked(
-      settings.value("preserveAttributes", false).toBool());
+      settings.value("preserveAttributesOnPull", false).toBool());
 
   connect(preserveAttr, &QCheckBox::toggled, [](bool checked) {
     QSettings().setValue("preserveAttributesOnPull", checked);
