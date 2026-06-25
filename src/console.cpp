@@ -1,4 +1,4 @@
-#include "console.h"
+#include "headers/console.h"
 #include <QHBoxLayout>
 
 ConsoleLog::ConsoleLog(QWidget *parent) : QWidget(parent) {

@@ -1,4 +1,4 @@
-#include "adb.h"
+#include "headers/adb.h"
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QStandardPaths>

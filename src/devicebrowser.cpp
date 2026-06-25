@@ -1,4 +1,4 @@
-#include "devicebrowser.h"
+#include "headers/devicebrowser.h"
 #include <QApplication>
 #include <QFontDatabase>
 #include <qdebug.h>

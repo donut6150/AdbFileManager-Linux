@@ -15,28 +15,28 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network)
 
 set(PROJECT_SOURCES
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
+    src/main.cpp
+    src/mainwindow.cpp
+    src/headers/mainwindow.h
+    src/mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(AdbFileManager
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        localbrowser.h
-        localbrowser.cpp
-        devicebrowser.h
-        devicebrowser.cpp
-        centralpanel.h
-        centralpanel.cpp
-        adb.h
-        adb.cpp
-        console.h
-        console.cpp
-        settings.h
-        settings.cpp
+        src/headers/localbrowser.h
+        src/headers/devicebrowser.h
+        src/headers/centralpanel.h
+        src/headers/adb.h
+        src/headers/console.h
+        src/headers/settings.h
+        src/localbrowser.cpp
+        src/devicebrowser.cpp
+        src/centralpanel.cpp
+        src/adb.cpp
+        src/console.cpp
+        src/settings.cpp
     )
     # Define target properties for Android with Qt 6 as:
     #    set_property(TARGET AdbFileManager APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -53,6 +53,7 @@ else()
         add_executable(AdbFileManager
             ${PROJECT_SOURCES}
         )
+        target_include_directories(AdbFileManager PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/src/headers)
     endif()
 endif()
 

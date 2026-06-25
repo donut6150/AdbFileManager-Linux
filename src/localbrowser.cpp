@@ -1,4 +1,4 @@
-#include "localbrowser.h"
+#include "headers/localbrowser.h"
 #include <QDir>
 #include <QFileSystemModel>
 #include <QVBoxLayout>

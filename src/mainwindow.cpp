@@ -1,9 +1,9 @@
-#include "mainwindow.h"
-#include "./ui_mainwindow.h"
-#include "adb.h"
-#include "console.h"
-#include "devicebrowser.h"
-#include "settings.h"
+#include "ui_mainwindow.h"
+#include "headers/mainwindow.h"
+#include "headers/adb.h"
+#include "headers/console.h"
+#include "headers/devicebrowser.h"
+#include "headers/settings.h"
 #include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent)

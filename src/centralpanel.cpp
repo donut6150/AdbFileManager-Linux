@@ -1,20 +1,14 @@
-#include "centralpanel.h"
+#include "headers/centralpanel.h"
 
 CentralPanel::CentralPanel(QWidget *parent) : QWidget(parent) {
   mainLayout = new QVBoxLayout(this);
 
-  pullBtn = new QPushButton();
-  pushBtn = new QPushButton();
-  refreshBtn = new QPushButton();
-  consoleBtn = new QPushButton();
-  settingBtn = new QPushButton();
+  pullBtn = new QPushButton("Pull ->");
+  pushBtn = new QPushButton("<- Push");
+  refreshBtn = new QPushButton("Refresh");
+  consoleBtn = new QPushButton("Console");
+  settingBtn = new QPushButton("Settings");
 
-  pullBtn->setIcon(QIcon::fromTheme("go-next"));
-  pushBtn->setIcon(QIcon::fromTheme("go-previous"));
-  refreshBtn->setIcon(QIcon::fromTheme("view-refresh"));
-  consoleBtn->setIcon(QIcon::fromTheme("utilities-terminal"));
-  settingBtn->setIcon(QIcon::fromTheme("preferences-system"));
-  
   pullBtn->setToolTip("Pull from device");
   pushBtn->setToolTip("Push to device");
   refreshBtn->setToolTip("Refresh");

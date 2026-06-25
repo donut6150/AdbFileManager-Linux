@@ -1,4 +1,4 @@
-#include "settings.h"
+#include "headers/settings.h"
 #include <QDir>
 #include <QNetworkReply>
 #include <QProcess>
