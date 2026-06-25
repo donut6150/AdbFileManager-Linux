@@ -77,3 +77,5 @@ cmake --build build
 6. You should see a file named `compile_commands.json` appear in the source folder
 7. Select configuration from the `Run & Debug` panel (`Debug`/`Release`)
 8. Press `F5`, or go to the `Run & Debug` panel and click on the green play button next to `Debug` on top
+
+Icon used: https://icons8.com/icon/eMmwa8nq22ZM/file-manager
