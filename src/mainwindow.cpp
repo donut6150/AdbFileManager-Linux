@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
 
   connect(leftPanel, &DeviceBrowser::pathChanged, this,
           [this](const QString &newPath) {
-            adb->exec({"shell", "ls", "-Ll", newPath}, ProcType::LOAD_FILES);
+            adb->exec({"shell", "ls", "-Ll", "\"" + newPath + "\""}, ProcType::LOAD_FILES);
           });
 
   connect(adb, &AdbHandler::output, this,
